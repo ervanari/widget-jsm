@@ -1,38 +1,100 @@
-.App {
+.floating-whatsapp-container {
+  position: fixed;
+  bottom: 75px;
+  right: 0px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  transition: all 0.3s ease;
+}
+
+.fab-container {
+  transition: transform 0.3s ease;
+}
+
+.fab-container.shift-left {
+  transform: translateX(-270px);
+}
+
+.panel-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  background-color: #25d366;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.panel-body {
+  padding: 0px 10px;
+  background-color: #ffffff;
+}
+
+.agents-panel {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #ffffff;
+  padding: 0px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.3s ease;
+  width: 270px;
+  display: flex;
+  flex-direction: column;
+}
+
+.agents-panel.panel-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.agent-item {
+  cursor: pointer;
+  padding: 0px 10px 0px 10px;
+  margin: 10px 0px;
+  background-color: #ececec;
+}
+
+.agent-item:hover {
+  background-color: #f1f1f1;
+}
+
+.agents-panel h2 {
+  margin-top: 0;
+  font-size: 16px;
+  font-weight: bold;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.agent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.agent img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 12px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.agent span {
+  display: block;
 }
 
-.App-link {
-  color: #61dafb;
+.phone {
+  font-size: 0.9rem;
+  color: #666;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.status {
+  font-size: 0.9rem;
+  color: green;
 }
