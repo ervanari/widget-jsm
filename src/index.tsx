@@ -1,19 +1,40 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import FloatingWhatsApp from './components/FloatingWhatsApp';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+interface Agent {
+    name: string;
+    phone: string;
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const initFloatingMediaWidget = (
+    containerId: string,
+    options: {
+        agents: Agent[];
+        message: string;
+        panelWidth: string;
+        fabColor: string;
+        fabPosition: 'bottom-left' | 'bottom-right' | 'top-left' | 'top-right';
+    }
+) => {
+    console.log('Initializing FloatingMediaWidget...');
+    console.log('Container ID:', containerId);
+    console.log('Options:', options);
+
+    const container = document.getElementById(containerId);
+    if (!container) {
+        console.error('Container not found');
+        return;
+    }
+
+    const root = ReactDOM.createRoot(
+        document.getElementById(containerId) as HTMLElement
+    );
+    root.render(
+        <React.StrictMode>
+            <FloatingWhatsApp {...options} />, container
+        </React.StrictMode>
+    );
+};
+
+export default initFloatingMediaWidget;
